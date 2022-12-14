@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+
+  &.modal-open {
+    overflow-y: hidden;
+  }
+}
+
+.btn {
+  padding: 12px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ff285a;
+  background-color: #fff;
+  border: 1px solid #ff285a;
+  border-radius: 5px;
+  min-width: 90px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(#ff285a, .2);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &.rounded-btn {
+    color: #fff;
+    background-color: rgba(#ff285a, .9);
+    border: none;
+    border-radius: 30px;
+
+    &:hover {
+      background-color: #ff285a;
+    }
+  }
+}

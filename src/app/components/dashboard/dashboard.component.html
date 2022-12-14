@@ -1,0 +1,57 @@
+<main class="dashboard-wrapper">
+  <section class="dashboard-wrapper-left">
+    <div class="filters">
+      <label>Filters</label>
+      <input type="search" (change)="onSearch()" [(ngModel)]="searchInput">
+    </div>
+    <div class="floors">
+      <div class="title-wrapper" (click)="showFloorsMenu = !showFloorsMenu">
+        <div>Floors</div>
+        <i class="icon fa fa-chevron-down" *ngIf="!showFloorsMenu"></i>
+        <i class="icon fa fa-chevron-up" *ngIf="showFloorsMenu"></i>
+      </div>
+      <ul *ngIf="showFloorsMenu">
+        <li *ngFor="let floor of availableFloors"
+          (click)="selectFloor(floor)"
+          [ngClass]="floor === selectedFloor ? 'selected' : ''">
+          {{ floor }}
+        </li>
+      </ul>
+    </div>
+    <div class="sections">
+      <div class="title-wrapper" (click)="showSectionsMenu = !showSectionsMenu">
+        <div>Sections</div>
+        <i class="icon fa fa-chevron-down" *ngIf="!showSectionsMenu"></i>
+        <i class="icon fa fa-chevron-up" *ngIf="showSectionsMenu"></i>
+      </div>
+      <ul *ngIf="showSectionsMenu">
+        <li *ngFor="let section of availableSections"
+          (click)="selectSection(section)"
+          [ngClass]="section === selectedSection ? 'selected' : ''">
+          {{ section}}
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="dashboard-wrapper-right">
+    <div class="products-header">
+      <button type="button" class="btn rounded-btn" (click)="productModalOpen()">Add product</button>
+      <div class="products-count">{{ products.length }} {{ products.length === 1 ? 'product' : 'products' }}</div>
+    </div>
+    <div class="products-content">
+      <product
+        *ngFor="let product of products"
+        [product]="product"
+        (editProductEmit)="productModalOpen(product)">
+      </product>
+    </div>
+  </section>
+  <new-product
+    *ngIf="showProductModal"
+    #newProductComponent
+    [allProducts]="allProducts"
+    [warehouseLayout]="warehouseLayout"
+    [availableFloors]="availableFloors"
+    (productModalCloseEmit)="productModalClose()">
+  </new-product>
+</main>

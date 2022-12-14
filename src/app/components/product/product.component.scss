@@ -1,0 +1,23 @@
+.product-wrappper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+  max-width: 400px;
+  font-size: 1.5rem;
+  border: 1px solid #ff285a;
+  border-radius: 5px;
+
+  .product {
+    .product-code {
+      color: #ff285a;
+      font-weight: 600;
+    }
+  }
+
+  .icon {
+    color: #ff285a;
+    cursor: pointer;
+  }
+}
